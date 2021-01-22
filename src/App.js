@@ -11,6 +11,8 @@ const url = 'https://course-api.com/react-useReducer-cart-project'
 const initialState = {
   loading:false,
   cart:[],
+  totalPrice:0,
+  totalItems:0
  
 }
 
@@ -40,10 +42,14 @@ return item
       return {...state, cart:temCart}
     }
     if(action.type==='TOTAL'){
-const {orderTotal, totalItems} = state.cart.reduce((cartTotal, cartItem)=>{
-  
-})
+ let total = state.cart.reduce((acc,tot)=>{
+acc += tot.cart.price
+ },0)
+  console.log(total);
+ return {...state, totalPrice:total}
+
     }
+   
 }
 
 
@@ -71,10 +77,13 @@ useEffect(()=>{
 getItems()
 },[])
  
- useEffect(()=>{
-   dispatch({type:'TOTAL'})
- },[state.cart])
-if(loading){
+useEffect(()=>{
+  dispatch({type:'TOTAL'})
+},[state.cart])
+
+
+ if(loading){
+
   return <Loading/>
 }
   return (

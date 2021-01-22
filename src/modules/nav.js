@@ -9,7 +9,7 @@ return <div className="nav-content">
 <h4 className="useReducer">useReducer</h4>
 <div className="lock">
 <AiFillLock/>
-<span className="span">{data.cart.length}</span>
+<span className="span">{data.totalItems}</span>
 </div>
 </div>
 }
